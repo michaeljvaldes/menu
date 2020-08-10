@@ -1,10 +1,7 @@
 package com.duane.menu.recipe;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,5 +24,10 @@ public class RecipeController {
     @GetMapping("/{id}")
     public Recipe getRecipe(@PathVariable Long id) {
         return recipeService.getRecipeById(id).orElseThrow(() -> new RecipeNotFoundException(id));
+    }
+
+    @DeleteMapping("/{id")
+    public void deleteRecipe(@PathVariable Long id) {
+        recipeService.deleteRecipeById(id);
     }
 }

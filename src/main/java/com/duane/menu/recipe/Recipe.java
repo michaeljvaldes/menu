@@ -12,6 +12,11 @@ public class Recipe {
 
     private String name;
 
+    public Recipe(){}
+    public Recipe(String name) {
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

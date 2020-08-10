@@ -24,4 +24,8 @@ public class RecipeService {
     public Optional<Recipe> getRecipeById(Long id) {
         return recipeRepository.findById(id);
     }
+
+    public void deleteRecipeById(Long id) {
+        recipeRepository.deleteById(id);
+    }
 }
