@@ -31,3 +31,17 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# compiled output
+/src/main/ui/menu/dist
+/src/main/ui/menu/tmp
+/src/main/ui/menu/out-tsc
+# Only exists if Bazel was run
+/src/main/ui/menu/bazel-out
+
+# dependencies
+/src/main/ui/menu/node_modules
+
+# profiling files
+/src/main/ui/menuchrome-profiler-events*.json
+/src/main/ui/menuspeed-measure-plugin*.json
