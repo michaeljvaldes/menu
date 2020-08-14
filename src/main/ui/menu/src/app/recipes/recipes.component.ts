@@ -10,10 +10,15 @@ import {RecipeService} from "../recipe.service";
 export class RecipesComponent implements OnInit {
 
   recipes: Recipe[];
+  selectedRecipe: Recipe;
 
   getRecipes(): void {
     this.recipeService.getRecipes()
       .subscribe(recipes => this.recipes = recipes);
+  }
+
+  onSelect(recipe: Recipe): void {
+    this.selectedRecipe = recipe;
   }
 
   constructor(private recipeService: RecipeService) { }
