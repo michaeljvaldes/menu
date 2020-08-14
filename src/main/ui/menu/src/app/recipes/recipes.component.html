@@ -1,4 +1,7 @@
 <h2>Recipes</h2>
 
-<div><span>id:</span>{{recipe.id}}</div>
-<div><span>name:</span>{{recipe.name}}</div>
+<ul class="recipes">
+  <li *ngFor="let recipe of recipes">
+    <span class="badge">{{recipe.id}}</span>{{recipe.name}}
+  </li>
+</ul>
