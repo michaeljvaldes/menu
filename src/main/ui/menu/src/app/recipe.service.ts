@@ -15,4 +15,8 @@ export class RecipeService {
   getRecipes(): Observable<Recipe[]> {
     return this.http.get<Recipe[]>(this.recipesUrl)
   }
+
+  updateRecipe(recipe: Recipe): Observable<any> {
+    return this.http.put(this.recipesUrl, recipe);
+  }
 }

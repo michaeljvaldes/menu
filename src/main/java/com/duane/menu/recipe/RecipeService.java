@@ -2,7 +2,6 @@ package com.duane.menu.recipe;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,5 +26,17 @@ public class RecipeService {
 
     public void deleteRecipeById(Long id) {
         recipeRepository.deleteById(id);
+    }
+
+    public Recipe putRecipe(Recipe newRecipe) {
+        Optional<Recipe> optionalRecipe = recipeRepository.findById(newRecipe.getId());
+        if (optionalRecipe.isPresent()) {
+            Recipe oldRecipe = optionalRecipe.get();
+//            oldRecipe.setName(newRecipe.getName());
+            oldRecipe.setName("Lol kek");
+            return recipeRepository.save(oldRecipe);
+        } else {
+            return recipeRepository.save(newRecipe);
+        }
     }
 }

@@ -27,8 +27,13 @@ public class RecipeController {
         return recipeService.getRecipeById(id).orElseThrow(() -> new RecipeNotFoundException(id));
     }
 
-    @DeleteMapping("/{id")
+    @DeleteMapping("/{id}")
     public void deleteRecipe(@PathVariable Long id) {
         recipeService.deleteRecipeById(id);
+    }
+
+    @PutMapping
+    public Recipe updateRecipe(@RequestBody Recipe recipe) {
+        return recipeService.putRecipe(recipe);
     }
 }
