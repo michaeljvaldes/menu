@@ -32,8 +32,7 @@ public class RecipeService {
         Optional<Recipe> optionalRecipe = recipeRepository.findById(newRecipe.getId());
         if (optionalRecipe.isPresent()) {
             Recipe oldRecipe = optionalRecipe.get();
-//            oldRecipe.setName(newRecipe.getName());
-            oldRecipe.setName("Lol kek");
+            oldRecipe.setName(newRecipe.getName());
             return recipeRepository.save(oldRecipe);
         } else {
             return recipeRepository.save(newRecipe);

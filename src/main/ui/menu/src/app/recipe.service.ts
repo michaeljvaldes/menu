@@ -16,7 +16,12 @@ export class RecipeService {
     return this.http.get<Recipe[]>(this.recipesUrl)
   }
 
-  updateRecipe(recipe: Recipe): Observable<any> {
-    return this.http.put(this.recipesUrl, recipe);
+  getRecipe(id: number): Observable<Recipe> {
+    const url = this.recipesUrl + '/' + id;
+    return this.http.get<Recipe>(url)
+  }
+
+  updateRecipe(recipe: Recipe): Observable<Recipe> {
+    return this.http.put<Recipe>(this.recipesUrl, recipe);
   }
 }
