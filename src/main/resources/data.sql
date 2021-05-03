@@ -15,3 +15,13 @@ VALUES
     ('1 ball', 'pizza dough', 1),
     ('3 oz', 'Taleggio cheese', 1);
 
+
+
+INSERT INTO coffee(`id`, `roaster`, `name`, `country`)
+VALUES
+    (1, 'Greater Goods Coffee Co.', 'Fresh Perspective', 'Ethiopia'),
+    (2, 'Greater Goods Coffee Co.', 'Kinini Village', 'Rwanda'),
+    (3, 'Greater Goods Coffee Co.', 'Take Me Home', 'Costa Rica'),
+    (4, '1000 Faces Coffee', 'Ngoma Bikunda Island', 'Rwanda');
+
+
