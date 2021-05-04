@@ -12,7 +12,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    CoffeesComponent
+    CoffeesComponent,
+    CoffeeTableComponent
   ],
   imports: [
     SharedModule,
