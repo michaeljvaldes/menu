@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { CoffeesComponent } from './component/coffees/coffees.component';
 import { RouterModule, Routes } from "@angular/router";
 import { SharedModule } from "../shared/shared.module";
 import { CoffeeTableComponent } from './component/coffee-table/coffee-table.component';
+import { NewCoffeeDialogComponent } from './new-coffee-dialog/new-coffee-dialog.component';
 
 const routes: Routes = [
   { path: '', component: CoffeesComponent },
@@ -13,7 +13,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     CoffeesComponent,
-    CoffeeTableComponent
+    CoffeeTableComponent,
+    NewCoffeeDialogComponent
   ],
   imports: [
     SharedModule,

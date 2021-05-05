@@ -23,7 +23,7 @@ public class CoffeeController {
     }
 
     @PostMapping
-    public List<Coffee> addCoffee(@RequestBody Coffee coffee) {
+    public Coffee addCoffee(@RequestBody Coffee coffee) {
         return coffeeService.addCoffee(coffee);
     }
 }

@@ -10,16 +10,23 @@ import { catchError, shareReplay, tap } from "rxjs/operators";
 export class CoffeeService {
 
   private coffeeUrl: string = 'http://localhost:8080/api/coffee';
+  private coffeeSubject: BehaviorSubject<Coffee[]> = new BehaviorSubject<Coffee[]>([]);
 
   constructor(private http: HttpClient) { }
 
-  coffees$: Observable<Coffee[]> = this.http.get<Coffee[]>(this.coffeeUrl)
-    .pipe(
-      tap(data => console.log('coffees', JSON.stringify(data))),
-      shareReplay(1)
-    );
+  get coffees$(): Observable<Coffee[]> {
+    return this.coffeeSubject.asObservable();
+  }
 
-  addCoffee(newCoffee: Coffee): Observable<Coffee[]> {
-    return this.http.post<Coffee[]>(this.coffeeUrl, newCoffee);
+  addCoffee(newCoffee: Coffee): Observable<Coffee> {
+    return this.http.post<Coffee>(this.coffeeUrl, newCoffee);
+  }
+
+  updateCoffees(): void {
+    this.http.get<Coffee[]>(this.coffeeUrl)
+      .subscribe(data => {
+        console.log('Data fetched');
+        this.coffeeSubject.next(data);
+      });
   }
 }

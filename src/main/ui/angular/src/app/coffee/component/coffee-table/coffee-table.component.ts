@@ -1,35 +1,10 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import {Coffee} from "../../model/coffee";
-import {MatTableDataSource} from "@angular/material/table";
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Coffee } from "../../model/coffee";
+import { MatTableDataSource } from "@angular/material/table";
 import { CoffeeService } from "../../service/coffee.service";
-import { tap } from "rxjs/operators";
-
-const dummyData: Coffee[] = [
-  {
-    id: 1,
-    roaster: "Greater Goods Coffee Co.",
-    name: "Fresh Perspective",
-    country: "Ethiopia"
-  },
-  {
-    id: 2,
-    roaster: "Greater Goods Coffee Co.",
-    name: "Kinini Village",
-    country: "Rwanda"
-  },
-  {
-    id: 3,
-    roaster: "Greater Goods Coffee Co.",
-    name: "Take Me Home",
-    country: "Costa Rica"
-  },
-  {
-    id: 4,
-    roaster: "1000 Faces Coffee",
-    name: "Ngoma Bikunda Island",
-    country: "Rwanda"
-  }
-];
+import { MatDialog } from "@angular/material/dialog";
+import { NewCoffeeDialogComponent } from "../../new-coffee-dialog/new-coffee-dialog.component";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-coffee-table',
@@ -41,11 +16,15 @@ export class CoffeeTableComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['id', 'roaster', 'name', 'country'];
   dataSource = new MatTableDataSource<Coffee>();
 
-  constructor(private coffeeService: CoffeeService) { }
+  constructor(
+    private router: Router,
+    private coffeeService: CoffeeService,
+    private newCoffeeDialog: MatDialog) { }
 
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
+    this.coffeeService.updateCoffees();
     this.coffeeService.coffees$.subscribe(
       coffees => {
         this.dataSource.data = coffees;
@@ -54,22 +33,16 @@ export class CoffeeTableComponent implements OnInit, AfterViewInit {
     );
   }
 
-  addCoffee(): void {
-    let coffee: Coffee = {
-      id: null,
-      roaster: 'Rev Coffee Roasters',
-      name: 'Ethiopia Kembata',
-      country: 'Ethiopia'
-    };
+  openNewCoffeeDialog(): void {
+    let dialogRef = this.newCoffeeDialog.open(NewCoffeeDialogComponent, {
+      height: '400px',
+      width: '600px',
+    });
 
-    this.coffeeService.addCoffee(coffee)
-      .subscribe(
-        coffees => {
-          this.dataSource.data = coffees;
-        },
-        err => {console.log('Error adding new coffee')}
-      );
-
+    dialogRef.afterClosed().subscribe(result => {
+        console.log('Dialog closed')
+        this.coffeeService.updateCoffees();
+      }, err => console.log('Error subscribing to coffees')
+    );
   }
-
 }
