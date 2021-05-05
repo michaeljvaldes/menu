@@ -39,9 +39,10 @@ export class CoffeeTableComponent implements OnInit, AfterViewInit {
       width: '600px',
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-        console.log('Dialog closed')
-        this.coffeeService.updateCoffees();
+    dialogRef.afterClosed().subscribe(newCoffee => {
+        if (newCoffee) {
+          this.coffeeService.updateCoffees();
+        }
       }, err => console.log('Error subscribing to coffees')
     );
   }
