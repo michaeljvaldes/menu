@@ -46,12 +46,30 @@ export class CoffeeTableComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-    this.coffeeService.coffees.subscribe(
+    this.coffeeService.coffees$.subscribe(
       coffees => {
         this.dataSource.data = coffees;
       },
       err => console.log('Error subscribing to coffees')
     );
+  }
+
+  addCoffee(): void {
+    let coffee: Coffee = {
+      id: null,
+      roaster: 'Rev Coffee Roasters',
+      name: 'Ethiopia Kembata',
+      country: 'Ethiopia'
+    };
+
+    this.coffeeService.addCoffee(coffee)
+      .subscribe(
+        coffees => {
+          this.dataSource.data = coffees;
+        },
+        err => {console.log('Error adding new coffee')}
+      );
+
   }
 
 }

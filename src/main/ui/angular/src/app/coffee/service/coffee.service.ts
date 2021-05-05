@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from "rxjs";
+import { BehaviorSubject, Observable, of, Subscription } from "rxjs";
 import { Coffee } from "../model/coffee";
 import { HttpClient } from "@angular/common/http";
-import { catchError, tap } from "rxjs/operators";
+import { catchError, shareReplay, tap } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -10,23 +10,16 @@ import { catchError, tap } from "rxjs/operators";
 export class CoffeeService {
 
   private coffeeUrl: string = 'http://localhost:8080/api/coffee';
-  private _coffees: Coffee[];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  get coffees(): Observable<Coffee[]> {
-    if (this._coffees) {
-      return of(this._coffees);
-    } else {
-      return this.loadCoffees();
-    }
-  }
+  coffees$: Observable<Coffee[]> = this.http.get<Coffee[]>(this.coffeeUrl)
+    .pipe(
+      tap(data => console.log('coffees', JSON.stringify(data))),
+      shareReplay(1)
+    );
 
-  private loadCoffees(): Observable<Coffee[]> {
-    this._coffees = [];
-    return this.http.get<Coffee[]>(this.coffeeUrl)
-      .pipe(
-        tap(data => this._coffees = data),
-      );
+  addCoffee(newCoffee: Coffee): Observable<Coffee[]> {
+    return this.http.post<Coffee[]>(this.coffeeUrl, newCoffee);
   }
 }
