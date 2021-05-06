@@ -8,8 +8,8 @@ import { catchError, shareReplay, tap } from "rxjs/operators";
   providedIn: 'root'
 })
 export class CoffeeService {
-
-  private coffeeUrl: string = 'http://localhost:8080/api/coffee';
+s
+  private coffeesUrl: string = 'http://localhost:8080/api/coffee';
   private coffeeSubject: BehaviorSubject<Coffee[]> = new BehaviorSubject<Coffee[]>([]);
 
   constructor(private http: HttpClient) { }
@@ -18,12 +18,17 @@ export class CoffeeService {
     return this.coffeeSubject.asObservable();
   }
 
+  getCoffeeById(id: number): Observable<Coffee> {
+    const coffeeUrl = `${this.coffeesUrl}/${id}`
+    return this.http.get<Coffee>(coffeeUrl);
+  }
+
   addCoffee(newCoffee: Coffee): Observable<Coffee> {
-    return this.http.post<Coffee>(this.coffeeUrl, newCoffee);
+    return this.http.post<Coffee>(this.coffeesUrl, newCoffee);
   }
 
   updateCoffees(): void {
-    this.http.get<Coffee[]>(this.coffeeUrl)
+    this.http.get<Coffee[]>(this.coffeesUrl)
       .subscribe(data => {
         console.log('Data fetched');
         this.coffeeSubject.next(data);

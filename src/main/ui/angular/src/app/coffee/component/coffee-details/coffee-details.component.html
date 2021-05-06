@@ -1,0 +1,30 @@
+<div *ngIf="!coffee">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="coffee">
+  <mat-card>
+    <mat-card-header>
+<!--      <mat-icon mat-card-avatar svgIcon="{{roaster.icon}}"></mat-icon>-->
+      <mat-card-title>
+        <h2>{{coffee.name}}</h2>
+      </mat-card-title>
+      <mat-card-subtitle>{{coffee.roaster}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-tab-group>
+        <mat-tab label="Info">
+          <p>
+            {{coffee.country}}
+          </p>
+        </mat-tab>
+        <mat-tab label="Roaster">
+          <p>{{coffee.roaster}}</p>
+        </mat-tab>
+        <mat-tab label="Reviews">
+          <!-- reviews -->
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+</div>

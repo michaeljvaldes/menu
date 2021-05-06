@@ -10,7 +10,9 @@ import { MatInputModule } from "@angular/material/input";
 import { MatIconModule } from "@angular/material/icon";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSortModule } from "@angular/material/sort";
-
+import { MatCardModule } from "@angular/material/card";
+import { MatTabsModule } from "@angular/material/tabs";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 
 @NgModule({
@@ -21,14 +23,18 @@ import { MatSortModule } from "@angular/material/sort";
     HttpClientModule,
     FormsModule,
     MatButtonModule,
+    MatCardModule,
     MatDialogModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
     MatPaginatorModule,
     MatSortModule,
+    MatProgressSpinnerModule,
     MatTableModule,
+    MatTabsModule,
     ReactiveFormsModule
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+}

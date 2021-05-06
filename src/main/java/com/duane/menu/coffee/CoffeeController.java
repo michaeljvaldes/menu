@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/coffee")
@@ -20,6 +21,11 @@ public class CoffeeController {
     @GetMapping
     public List<Coffee> getAllCoffees() {
         return coffeeService.getAllCoffees();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Coffee> getCoffeeById(@PathVariable long id) {
+        return coffeeService.getCoffeeById(id);
     }
 
     @PostMapping

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CoffeeService {
@@ -17,6 +18,10 @@ public class CoffeeService {
 
     public List<Coffee> getAllCoffees() {
         return coffeeRepository.findAll();
+    }
+
+    public Optional<Coffee> getCoffeeById(long id) {
+        return coffeeRepository.findById(id);
     }
 
     public Coffee addCoffee(Coffee coffee) {
