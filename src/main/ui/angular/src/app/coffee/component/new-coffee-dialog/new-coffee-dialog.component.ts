@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Coffee } from "../model/coffee";
+import { Coffee } from "../../model/coffee";
 import { MatDialogRef } from "@angular/material/dialog";
-import { CoffeeService } from "../service/coffee.service";
+import { CoffeeService } from "../../service/coffee.service";
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 
 @Component({

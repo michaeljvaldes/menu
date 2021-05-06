@@ -3,7 +3,7 @@ import { Coffee } from "../../model/coffee";
 import { MatTableDataSource } from "@angular/material/table";
 import { CoffeeService } from "../../service/coffee.service";
 import { MatDialog } from "@angular/material/dialog";
-import { NewCoffeeDialogComponent } from "../../new-coffee-dialog/new-coffee-dialog.component";
+import { NewCoffeeDialogComponent } from "../new-coffee-dialog/new-coffee-dialog.component";
 import { Router } from "@angular/router";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
