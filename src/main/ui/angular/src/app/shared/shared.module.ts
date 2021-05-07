@@ -13,6 +13,7 @@ import { MatSortModule } from "@angular/material/sort";
 import { MatCardModule } from "@angular/material/card";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatToolbarModule } from "@angular/material/toolbar";
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
     MatProgressSpinnerModule,
     MatTableModule,
     MatTabsModule,
+    MatToolbarModule,
     ReactiveFormsModule
   ]
 })
