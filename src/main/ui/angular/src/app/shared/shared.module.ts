@@ -14,6 +14,8 @@ import { MatCardModule } from "@angular/material/card";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatGridListModule } from "@angular/material/grid-list";
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 
 @NgModule({
@@ -22,11 +24,13 @@ import { MatToolbarModule } from "@angular/material/toolbar";
   exports: [
     CommonModule,
     HttpClientModule,
+    FlexLayoutModule,
     FormsModule,
     MatButtonModule,
     MatCardModule,
     MatDialogModule,
     MatFormFieldModule,
+    MatGridListModule,
     MatIconModule,
     MatInputModule,
     MatPaginatorModule,

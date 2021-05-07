@@ -6,6 +6,7 @@ import { CoffeeTableComponent } from './component/coffee-table/coffee-table.comp
 import { NewCoffeeDialogComponent } from './component/new-coffee-dialog/new-coffee-dialog.component';
 import { CoffeeDetailsComponent } from './component/coffee-details/coffee-details.component';
 import { ToolbarComponent } from './component/toolbar/toolbar.component';
+import { AllCoffeesComponent } from './component/all-coffees/all-coffees.component';
 
 const routes: Routes = [
   {
@@ -13,10 +14,12 @@ const routes: Routes = [
     component: CoffeesComponent,
     children: [
       { path: '', component: CoffeeTableComponent },
-      { path: ':id', component: CoffeeDetailsComponent },
-      { path: '**', redirectTo: '' }
+      { path: 'all-coffees', component: AllCoffeesComponent },
+      { path: ':id', component: CoffeeDetailsComponent }
     ]
-  }];
+  },
+  { path: '**', redirectTo: 'coffee' }
+];
 
 @NgModule({
   declarations: [
@@ -24,7 +27,8 @@ const routes: Routes = [
     CoffeeTableComponent,
     NewCoffeeDialogComponent,
     CoffeeDetailsComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    AllCoffeesComponent
   ],
   imports: [
     SharedModule,

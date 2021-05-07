@@ -8,7 +8,7 @@ import { catchError, shareReplay, tap } from "rxjs/operators";
   providedIn: 'root'
 })
 export class CoffeeService {
-s
+
   private coffeesUrl: string = 'http://localhost:8080/api/coffee';
   private coffeeSubject: BehaviorSubject<Coffee[]> = new BehaviorSubject<Coffee[]>([]);
 

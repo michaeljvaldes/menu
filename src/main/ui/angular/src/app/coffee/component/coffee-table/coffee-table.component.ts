@@ -31,9 +31,7 @@ export class CoffeeTableComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.coffeeService.updateCoffees();
     this.coffeeService.coffees$.subscribe(
-      coffees => {
-        this.dataSource.data = coffees;
-      },
+      coffees => this.dataSource.data = coffees,
       err => console.log('Error subscribing to coffees')
     );
     this.dataSource.paginator = this.paginator;
