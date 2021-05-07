@@ -10,14 +10,15 @@ import { Coffee } from "../../model/coffee";
 export class AllCoffeesComponent implements OnInit {
 
   coffees: Coffee[];
+  count = 1;
 
   constructor(private coffeeService: CoffeeService) { }
 
   ngOnInit(): void {
-    this.coffeeService.updateCoffees();
-    this.coffeeService.coffees$.subscribe(
+    this.coffeeService.updatePageCoffees(0, this.count);
+    this.coffeeService.pageCoffees$.subscribe(
       coffees => this.coffees = coffees,
-      err => console.log('Error fetching coffees')
+      err => console.log('Error fetching page coffees')
     );
   }
 

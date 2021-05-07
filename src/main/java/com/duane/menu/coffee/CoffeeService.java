@@ -1,6 +1,9 @@
 package com.duane.menu.coffee;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,8 +19,13 @@ public class CoffeeService {
         this.coffeeRepository = coffeeRepository;
     }
 
-    public List<Coffee> getAllCoffees() {
+    public List<Coffee> getCoffees() {
         return coffeeRepository.findAll();
+    }
+
+    public Page<Coffee> getCoffeesPaginated(int page, int count) {
+        Pageable pageable = PageRequest.of(page, count);
+        return coffeeRepository.findAll(pageable);
     }
 
     public Optional<Coffee> getCoffeeById(long id) {
