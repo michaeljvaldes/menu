@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { CoffeeService } from "../../service/coffee.service";
 import { Coffee } from "../../model/coffee";
+import { PageEvent } from "@angular/material/paginator";
 
 @Component({
   selector: 'app-all-coffees',
@@ -10,16 +11,27 @@ import { Coffee } from "../../model/coffee";
 export class AllCoffeesComponent implements OnInit {
 
   coffees: Coffee[];
-  count = 1;
+  initialPageIndex = 0;
+  initialPageSize = 1;
+  pageEvent: PageEvent;
+  totalPages: number;
 
   constructor(private coffeeService: CoffeeService) { }
 
   ngOnInit(): void {
-    this.coffeeService.updatePageCoffees(0, this.count);
+    this.coffeeService.updatePageCoffees(this.initialPageIndex, this.initialPageSize);
     this.coffeeService.pageCoffees$.subscribe(
-      coffees => this.coffees = coffees,
+      pageCoffees => {
+        this.coffees = pageCoffees.content;
+        this.totalPages = pageCoffees.totalPages;
+      },
       err => console.log('Error fetching page coffees')
     );
   }
+
+  updatePageCoffees(event?: PageEvent): PageEvent {
+    this.coffeeService.updatePageCoffees(event.pageIndex, event.pageSize);
+    return event;
+}
 
 }

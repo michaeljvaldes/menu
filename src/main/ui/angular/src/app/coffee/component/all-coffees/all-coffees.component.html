@@ -17,3 +17,9 @@
     </mat-card-actions>
   </mat-card>
 </div>
+
+<mat-paginator [length]="totalPages"
+               [pageSize]="initialPageSize"
+               [pageSizeOptions]="[5, 10, 25, 100]"
+               (page)="pageEvent = updatePageCoffees($event)">
+</mat-paginator>

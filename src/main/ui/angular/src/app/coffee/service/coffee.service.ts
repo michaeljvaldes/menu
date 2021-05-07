@@ -10,7 +10,7 @@ export class CoffeeService {
 
   private coffeesUrl: string = 'http://localhost:8080/api/coffee';
   private coffeeSubject: BehaviorSubject<Coffee[]> = new BehaviorSubject<Coffee[]>([]);
-  private pageCoffeeSubject: BehaviorSubject<Coffee[]> = new BehaviorSubject<Coffee[]>([]);
+  private pageCoffeeSubject: BehaviorSubject<PageCoffees> = new BehaviorSubject<PageCoffees>(new PageCoffees());
 
   constructor(private http: HttpClient) { }
 
@@ -18,7 +18,7 @@ export class CoffeeService {
     return this.coffeeSubject.asObservable();
   }
 
-  get pageCoffees$(): Observable<Coffee[]> {
+  get pageCoffees$(): Observable<PageCoffees> {
     return this.pageCoffeeSubject.asObservable();
   }
 
@@ -39,14 +39,14 @@ export class CoffeeService {
       });
   }
 
-  updatePageCoffees(page: number, count: number): void {
-    const pageCoffeeUrl = `${this.coffeesUrl}?page=${page}&count=${count}`;
-    this.http.get<PaginatedCoffees>(pageCoffeeUrl)
-      .subscribe(data => this.pageCoffeeSubject.next(data.content));
+  updatePageCoffees(pageIndex: number, pageSize: number): void {
+    const pageCoffeeUrl = `${this.coffeesUrl}?page=${pageIndex}&count=${pageSize}`;
+    this.http.get<PageCoffees>(pageCoffeeUrl)
+      .subscribe(data => this.pageCoffeeSubject.next(data));
   }
 }
 
-export class PaginatedCoffees {
+export class PageCoffees {
   content: Coffee[];
   pageable : {
     sort: {
