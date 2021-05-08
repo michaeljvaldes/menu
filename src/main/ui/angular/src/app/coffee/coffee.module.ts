@@ -7,6 +7,7 @@ import { NewCoffeeDialogComponent } from './component/new-coffee-dialog/new-coff
 import { CoffeeDetailsComponent } from './component/coffee-details/coffee-details.component';
 import { ToolbarComponent } from './component/toolbar/toolbar.component';
 import { AllCoffeesComponent } from './component/all-coffees/all-coffees.component';
+import { ReviewExpansionPanelComponent } from './component/review-expansion-panel/review-expansion-panel.component';
 
 const routes: Routes = [
   {
@@ -28,7 +29,8 @@ const routes: Routes = [
     NewCoffeeDialogComponent,
     CoffeeDetailsComponent,
     ToolbarComponent,
-    AllCoffeesComponent
+    AllCoffeesComponent,
+    ReviewExpansionPanelComponent
   ],
   imports: [
     SharedModule,

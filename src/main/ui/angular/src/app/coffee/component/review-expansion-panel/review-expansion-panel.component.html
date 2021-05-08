@@ -1,0 +1,17 @@
+<mat-expansion-panel (opened)="panelOpenState = true"
+                     (closed)="panelOpenState = false">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Duane | {{review.dateTime}}
+    </mat-panel-title>
+    <mat-panel-description>
+      <div *ngIf="panelOpenState===false">
+        R:{{review.rating}} BM:{{review.brewMethod}} T:{{review.temperature}} <!-- replace with icons -->
+      </div>
+      <div *ngIf="panelOpenState==true">
+
+      </div>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <p>I'm visible because I am open</p>
+</mat-expansion-panel>

@@ -16,6 +16,7 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { MatExpansionModule } from "@angular/material/expansion";
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     MatButtonModule,
     MatCardModule,
     MatDialogModule,
+    MatExpansionModule,
     MatFormFieldModule,
     MatGridListModule,
     MatIconModule,

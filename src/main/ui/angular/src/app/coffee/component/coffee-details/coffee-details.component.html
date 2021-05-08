@@ -22,7 +22,9 @@
           <p>{{coffee.roaster}}</p>
         </mat-tab>
         <mat-tab label="Reviews">
-          <!-- reviews -->
+          <div class="review-wrapper" *ngFor="let review of coffee.reviews">
+          <app-review-expansion-panel [review]="review"></app-review-expansion-panel>
+          </div>
         </mat-tab>
       </mat-tab-group>
     </mat-card-content>
