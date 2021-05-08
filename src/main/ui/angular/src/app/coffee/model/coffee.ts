@@ -7,5 +7,5 @@ export class Coffee {
   name: string;
   country: string;
   reviews: Review[];
-  
+
 }
