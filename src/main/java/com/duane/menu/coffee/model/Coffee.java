@@ -1,5 +1,7 @@
 package com.duane.menu.coffee.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -15,6 +17,7 @@ public class Coffee {
     private String country;
     //    private List<String> roasterNotes;
     @OneToMany(mappedBy = "coffee", fetch = FetchType.EAGER)
+    @JsonManagedReference
     private Set<Review> reviews;
 
     //
