@@ -1,8 +1,5 @@
 package com.duane.menu.coffee.model;
 
-import com.duane.menu.coffee.model.BrewMethod;
-import com.duane.menu.coffee.model.Coffee;
-import com.duane.menu.coffee.model.Rating;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;

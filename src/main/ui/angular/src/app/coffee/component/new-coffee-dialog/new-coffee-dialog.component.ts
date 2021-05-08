@@ -50,7 +50,8 @@ export class NewCoffeeDialogComponent implements OnInit {
         id: null,
         roaster: this.roaster.value,
         name: this.name.value,
-        country: this.country.value
+        country: this.country.value,
+        reviews: []
       };
 
       this.coffeeService.addCoffee(coffee)
