@@ -12,7 +12,7 @@ export class AllCoffeesComponent implements OnInit {
 
   coffees: Coffee[];
   initialPageIndex = 0;
-  initialPageSize = 1;
+  initialPageSize = 5;
   pageEvent: PageEvent;
   totalPages: number;
 

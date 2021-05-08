@@ -1,6 +1,7 @@
-package com.duane.menu.coffee;
+package com.duane.menu.coffee.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "coffee")
@@ -12,42 +13,48 @@ public class Coffee {
     private String roaster; //use roaster icons!
     private String name;
     private String country;
-//    private List<String> roasterNotes;
-//
+    //    private List<String> roasterNotes;
+    @OneToMany(mappedBy = "coffee", fetch = FetchType.EAGER)
+    private Set<Review> reviews;
 
+    //
     public Long getId() {
         return id;
     }
 
-    public Coffee setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
-        return this;
     }
 
     public String getRoaster() {
         return roaster;
     }
 
-    public Coffee setRoaster(String roaster) {
+    public void setRoaster(String roaster) {
         this.roaster = roaster;
-        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public Coffee setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return this;
     }
 
     public String getCountry() {
         return country;
     }
 
-    public Coffee setCountry(String country) {
+    public void setCountry(String country) {
         this.country = country;
-        return this;
+    }
+
+    public Set<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(Set<Review> reviews) {
+        this.reviews = reviews;
     }
 }

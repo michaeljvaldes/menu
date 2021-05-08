@@ -1,4 +1,4 @@
-package com.duane.menu.coffee;
+package com.duane.menu.coffee.model;
 
 public class Roaster {
 
