@@ -8,12 +8,23 @@ import { Review } from "../../model/review";
 })
 export class ReviewExpansionPanelComponent implements OnInit {
 
+  @Input() review: Review;
+
   panelOpenState = false;
-  @Input()  review: Review;
+  ratingArr = [1, 2, 3, 4, 5];
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  showIcon(index: number): string {
+    console.log(`rating = ${this.review.rating}`)
+    console.log(`star_index = ${index}`)
+    if (this.review.rating >= index + 1) {
+      return 'star';
+    } else {
+      return 'star_border';
+    }
   }
 
 }

@@ -2,16 +2,24 @@
                      (closed)="panelOpenState = false">
   <mat-expansion-panel-header>
     <mat-panel-title>
-      Duane | {{review.dateTime}}
+      Duane | {{review.dateTime | date }}
     </mat-panel-title>
+    <!--      <div *ngIf="panelOpenState===false">-->
     <mat-panel-description>
-      <div *ngIf="panelOpenState===false">
-        R:{{review.rating}} BM:{{review.brewMethod}} T:{{review.temperature}} <!-- replace with icons -->
-      </div>
+
+      <!--  <button mat-icon-button [color]="color" *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i" (click)="onClick(i+1)">-->
+      <mat-icon *ngFor="let ratingId of ratingArr; index as i" color="accent">
+        {{showIcon(i)}}
+      </mat-icon>
+      <!--  </button>-->
+    </mat-panel-description>
+    <mat-panel-description>
+      BM:{{review.brewMethod}} T:{{review.temperature}} <!-- replace with icons -->
       <div *ngIf="panelOpenState==true">
 
       </div>
     </mat-panel-description>
+    <!--      </div>-->
   </mat-expansion-panel-header>
-  <p>I'm visible because I am open</p>
+  <!--Opened expansion body -->
 </mat-expansion-panel>

@@ -1,5 +1,7 @@
 package com.duane.menu.coffee.model;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import java.util.Arrays;
 import java.util.Optional;
 
@@ -17,6 +19,7 @@ public enum Rating {
         this.id = id;
     }
 
+    @JsonValue
     public int getId() {
         return this.id;
     }
